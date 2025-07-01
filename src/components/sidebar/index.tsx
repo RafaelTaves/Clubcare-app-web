@@ -1,39 +1,87 @@
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+"use client";
+
+import { Sheet, SheetTrigger, SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Home, Package, PanelBottom } from "lucide-react";
+import { AlignJustify, CirclePlus, List, CircleUserRound, Pointer, Power, SquareMenu } from "lucide-react";
+import { useUser } from "@/contexts/AuthContext";
 
 
 export function Sidebar() {
+    const { user, setUser, fetchUser, logout } = useUser()
+
     return (
         <div className="flex w-full flex-col bg-muted/40">
 
-            <div className="sm:fidden flex felx-col sm:gap-4 sm:py-4 sm:pl-14">
+            <div className="sm:hidden flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
                 <header className="sticky top-0 z-30 flex h-14 items-center px-4 border-b bg-background gap-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button size="icon" variant="outline" className="sm:hidden">
-                                <PanelBottom className="w-5 h-5"/>
+                                <AlignJustify className="w-5 h-5" />
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="left" className="sm:max-w-x">
                             <nav className="grid gap-6 text-lg font-medium">
-                                <Link 
-                                href="#"
-                                className="flex h-10 -10 bg-primary rounded-full text-lg items-center justify-center text-primary-foreground md:text-base gap-2"
-                                prefetch={false}
+                                <Link
+                                    href="#"
+                                    className="flex h-12 -12 text-2xl items-center px-2.5 text-primary md:text-base gap-4 mt-2"
+                                    prefetch={false}
                                 >
-                                    <Package className="h-5 w-5 transition-all"/>
-                                    <span className="sr-only">Logo do projeto</span>
+                                    {user?.place?.imageUrl && (
+                                        <img
+                                            src={user.place.imageUrl}
+                                            alt={user.place.name}
+                                            className="w-12 h-12 object-cover rounded-full"
+                                        />
+                                    )}
+                                    
                                 </Link>
 
-                                <Link 
-                                href="#"
-                                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foregorund"
-                                prefetch={false}
+                                <Link
+                                    href="#"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    prefetch={false}
                                 >
-                                    <Home className="h-5 w-5 transition-all"/>
-                                    Meus tickets
+                                    <CirclePlus className="h-5 w-5 transition-all" />
+                                    Novo Registro
+                                </Link>
+
+                                <Link
+                                    href="#"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    prefetch={false}
+                                >
+                                    <List className="h-5 w-5 transition-all" />
+                                    Meus Registros
+                                </Link>
+
+                                <Link
+                                    href="#"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    prefetch={false}
+                                >
+                                    <Pointer className="h-5 w-5 transition-all" />
+                                    Selecionar Local
+                                </Link>
+
+                                <Link
+                                    href="#"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    prefetch={false}
+                                >
+                                    <CircleUserRound className="h-5 w-5 transition-all" />
+                                    Meus Dados
+                                </Link>
+
+                                <Link
+                                    href="#"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    prefetch={false}
+                                    onClick={logout}
+                                >
+                                    <Power className="h-5 w-5 transition-all" />
+                                    Sair do Sistema
                                 </Link>
                             </nav>
                         </SheetContent>
