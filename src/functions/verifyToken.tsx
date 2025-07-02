@@ -24,7 +24,7 @@ export default async function verifyToken ({
             setUser(null)
             push("/login")
         }
-    } catch (error) {
+    } catch {
         localStorage.removeItem("token")
         localStorage.removeItem("refreshToken")
         setUser(null)

@@ -1,14 +1,14 @@
 "use client";
 
-import { Sheet, SheetTrigger, SheetContent, SheetHeader } from "@/components/ui/sheet";
+import { Sheet, SheetTrigger, SheetContent} from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { AlignJustify, CirclePlus, List, CircleUserRound, Pointer, Power, SquareMenu } from "lucide-react";
+import { AlignJustify, CirclePlus, List, CircleUserRound, Pointer, Power} from "lucide-react";
 import { useUser } from "@/contexts/AuthContext";
 
 
 export function Sidebar() {
-    const { user, setUser, fetchUser, logout } = useUser()
+    const { user, logout } = useUser()
 
     return (
         <div className="flex w-full flex-col bg-muted/40">
@@ -24,7 +24,7 @@ export function Sidebar() {
                         <SheetContent side="left" className="sm:max-w-x">
                             <nav className="grid gap-6 text-lg font-medium">
                                 <Link
-                                    href="#"
+                                    href="/registros"
                                     className="flex h-12 -12 text-2xl items-center px-2.5 text-primary md:text-base gap-4 mt-2"
                                     prefetch={false}
                                 >
@@ -48,7 +48,7 @@ export function Sidebar() {
                                 </Link>
 
                                 <Link
-                                    href="#"
+                                    href="/registros"
                                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                     prefetch={false}
                                 >
@@ -57,7 +57,7 @@ export function Sidebar() {
                                 </Link>
 
                                 <Link
-                                    href="#"
+                                    href="/local"
                                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                     prefetch={false}
                                 >
@@ -66,7 +66,7 @@ export function Sidebar() {
                                 </Link>
 
                                 <Link
-                                    href="#"
+                                    href="/meus-dados"
                                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                     prefetch={false}
                                 >
@@ -74,15 +74,13 @@ export function Sidebar() {
                                     Meus Dados
                                 </Link>
 
-                                <Link
-                                    href="#"
+                                <button
                                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
                                     onClick={logout}
                                 >
                                     <Power className="h-5 w-5 transition-all" />
                                     Sair do Sistema
-                                </Link>
+                                </button>
                             </nav>
                         </SheetContent>
                     </Sheet>

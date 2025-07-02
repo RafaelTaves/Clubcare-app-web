@@ -13,7 +13,7 @@ export default async function deleteTicket(ticketId: number){
         if (response.status === 200) {
             return true;
         }
-    } catch (error) {
+    } catch {
         return false;
     }
     

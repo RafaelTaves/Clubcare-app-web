@@ -54,7 +54,7 @@ export default function Login() {
       setTimeout(() => {
         window.location.href = "/local";
       }, 1000);
-    } catch (err) {
+    } catch {
       toast.error("Erro no login", {
         description: "E-mail ou senha incorretos!",
         duration: 3000,

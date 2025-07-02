@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from 'sonner';
 import { AlertCircle, CheckCircle } from "lucide-react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: 'swap', // Adicione esta linha
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap', // Adicione esta linha
-});
 
 export const metadata: Metadata = {
   title: "Club Care",
@@ -29,27 +16,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased">
+    <div className="dashboard-wrapper">
         <AuthProvider>
           <Sidebar />
           {children}
-          <Toaster 
-            richColors
-            position="top-right"
-            icons={{
-              success: <CheckCircle className="text-green-600 w-5 h-5" />,
-              error: <AlertCircle className="text-red-600 w-5 h-5" />,
-            }}
-            toastOptions={{
-              classNames: {
-                success: "bg-green-50 text-green-900",
-                error: "bg-red-50 text-red-900",
-              }
-            }}
+          <Toaster richColors
+          position="top-right"
+          icons={{
+            success: <CheckCircle className="text-green-600 w-5 h-5" />,
+            error: <AlertCircle className="text-red-600 w-5 h-5" />,
+          }}
+          toastOptions={{
+            classNames: {
+              success: "bg-green-50 text-green-900",
+              error: "bg-red-50 text-red-900",
+            }
+          }}
           />
         </AuthProvider>
-      </body>
-    </html>
+      </div>
   );
 }

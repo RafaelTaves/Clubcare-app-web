@@ -1,6 +1,4 @@
-// src/contexts/AuthContext.tsx
 "use client"
-
 import { createContext, useContext, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
@@ -61,7 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           },
       })
       setUser(response.data.data)
-    } catch (err) {
+    } catch {
       setUser(null)
     } finally {
       setLoading(false)

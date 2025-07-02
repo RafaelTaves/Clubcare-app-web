@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useMemo } from 'react';
 
 interface ImageData {
