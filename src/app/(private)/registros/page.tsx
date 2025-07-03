@@ -57,6 +57,7 @@ export default function Registros() {
                 duration: 2000,
             });
             fetchTickets();
+            router.push("/registros");
         } else {
             toast("Erro!", {
                 description: "Erro ao excluir o ticket.",
@@ -103,7 +104,9 @@ export default function Registros() {
                             {tickets.length} {tickets.length === 1 ? 'ticket encontrado' : 'tickets encontrados'}
                         </p>
                     </div>
-                    <Button className="max-w-1/2 mt-1 bg-primaria hover:bg-primaria/80">
+                    <Button 
+                    onClick={() => router.push(`/novo-registro`)}
+                    className="max-w-1/2 mt-1 bg-primaria hover:bg-primaria/80">
                         Novo Registro
                     </Button>
                 </div>
